@@ -1,0 +1,216 @@
+name: LendingClubDefaultModel
+
+lc_data_path:  '../data/Loan_status_2007-2020Q3.gzip'
+pipeline_path: '../model/creditrisk_model.pkl'
+benchmark_testset_id: '../data/test/lendingclub_testset_id.npy'
+
+catboost:
+    hyperparameters:
+        'nan_mode': 'Min'
+        'eval_metric': 'Logloss'
+        'iterations': 1000
+        'sampling_frequency': 'PerTree'
+        'leaf_estimation_method': 'Newton'
+        'grow_policy': 'SymmetricTree'
+        'penalties_coefficient': 1
+        'boosting_type': 'Plain'
+        'model_shrink_mode': 'Constant'
+        'feature_border_type': 'GreedyLogSum'
+        'l2_leaf_reg': 3
+        'random_strength': 1
+        'rsm': 1
+        'boost_from_average': False
+        'model_size_reg': 0.5
+        'subsample': 0.800000011920929
+        'use_best_model': False
+        'class_names': [0, 1]
+        'random_seed': 6975
+        'depth': 6
+        'posterior_sampling': False
+        'border_count': 254
+        'classes_count': 0
+        'auto_class_weights': 'None'
+        'sparse_features_conflict_fraction': 0
+        'leaf_estimation_backtracking': 'AnyImprovement'
+        'best_model_min_trees': 1
+        'model_shrink_rate': 0
+        'min_data_in_leaf': 1
+        'loss_function': 'Logloss'
+        'learning_rate': 0.06403099745512009
+        'score_function': 'Cosine'
+        'task_type': 'CPU'
+        'leaf_estimation_iterations': 10
+        'bootstrap_type': 'MVS'
+        'max_leaves': 64
+        'logging_level' : 'Silent'
+        # 'bayesian_matrix_reg': 0.10000000149011612
+        # 'force_unit_auto_pair_weights': False
+        # 'pool_metainfo_options': {'tags': {}}
+        
+    bayesian_search_tune:
+        'nan_mode': 'Min'
+        'eval_metric': 'Logloss'
+        'iterations': 237
+        'sampling_frequency': 'PerTree'
+        'leaf_estimation_method': 'Newton'
+        'grow_policy': 'SymmetricTree'
+        'penalties_coefficient': 1
+        'boosting_type': 'Plain'
+        'model_shrink_mode': 'Constant'
+        'feature_border_type': 'GreedyLogSum'
+        'l2_leaf_reg': 13
+        'random_strength': 0.556142270565033
+        'rsm': 1
+        'boost_from_average': False
+        'model_size_reg': 0.5
+        'subsample': 0.800000011920929
+        'use_best_model': False
+        'class_names': [0, 1]
+        'random_seed': 4718
+        'depth': 5
+        'posterior_sampling': False
+        'border_count': 254
+        'classes_count': 0
+        'auto_class_weights': 'None'
+        'sparse_features_conflict_fraction': 0
+        'leaf_estimation_backtracking': 'AnyImprovement'
+        'best_model_min_trees': 1
+        'model_shrink_rate': 0
+        'min_data_in_leaf': 1
+        'loss_function': 'Logloss'
+        'learning_rate': 0.3580308258533478
+        'score_function': 'Cosine'
+        'task_type': 'CPU'
+        'leaf_estimation_iterations': 10
+        'bootstrap_type': 'MVS'
+        'max_leaves': 32
+        'logging_level' : 'Silent'
+        # 'bayesian_matrix_reg': 0.10000000149011612,
+        # 'force_unit_auto_pair_weights': False,
+        # 'pool_metainfo_options': {'tags': {}},
+        
+    bayesian_search_tune2:
+        'nan_mode': 'Min'
+        'eval_metric': 'Logloss'
+        'iterations': 1000
+        'sampling_frequency': 'PerTree'
+        'leaf_estimation_method': 'Newton'
+        'grow_policy': 'SymmetricTree'
+        'penalties_coefficient': 1
+        'boosting_type': 'Plain'
+        'model_shrink_mode': 'Constant'
+        'feature_border_type': 'GreedyLogSum'
+        'l2_leaf_reg': 3
+        'random_strength': 1
+        'rsm': 1
+        'boost_from_average': False
+        'model_size_reg': 0.5
+        'subsample': 0.800000011920929
+        'use_best_model': False
+        'class_names': [0, 1]
+        'random_seed': 4718
+        'depth': 6
+        'posterior_sampling': False
+        'border_count': 254
+        'classes_count': 0
+        'auto_class_weights': 'None'
+        'sparse_features_conflict_fraction': 0
+        'leaf_estimation_backtracking': 'AnyImprovement'
+        'best_model_min_trees': 1
+        'model_shrink_rate': 0
+        'min_data_in_leaf': 1
+        'loss_function': 'Logloss'
+        'learning_rate': 0.06403899937868118
+        'score_function': 'Cosine'
+        'task_type': 'CPU'
+        'leaf_estimation_iterations': 10
+        'bootstrap_type': 'MVS'
+        'max_leaves': 64
+        'logging_level' : 'Silent'
+
+
+
+
+
+label_col_name: default
+    
+input_features:
+    categorical:
+        - application_type
+        - home_ownership
+    high_categorical:
+        - addr_state
+    date:
+        - last_credit_pull_d
+        # - applcation_date
+    numeric:
+        - acc_now_delinq
+        - acc_open_past_24mths
+        - all_util
+        - annual_inc
+        - annual_inc_joint
+        - avg_cur_bal
+        - bc_open_to_buy
+        - bc_util
+        - collections_12_mths_ex_med
+        - delinq_2yrs
+        - delinq_amnt
+        - dti
+        - dti_joint
+        - emp_length
+        - earliest_cr_line ##
+        - fico_range_low ##
+        - fico_range_high ##
+        # - ficoscore
+        - il_util
+        - inq_fi
+        - inq_last_12m
+        - inq_last_6mths
+        - last_credit_pull_d ##
+        - max_bal_bc
+        - mo_sin_old_il_acct
+        - mo_sin_old_rev_tl_op
+        - mo_sin_rcnt_rev_tl_op
+        - mo_sin_rcnt_tl
+        - mort_acc
+        - mths_since_rcnt_il
+        - mths_since_recent_bc
+        - mths_since_recent_inq
+        - num_accts_ever_120_pd
+        - num_actv_bc_tl
+        - num_actv_rev_tl
+        - num_bc_sats
+        - num_bc_tl
+        - num_op_rev_tl
+        - num_rev_accts
+        - num_rev_tl_bal_gt_0
+        - num_sats
+        - num_tl_120dpd_2m
+        - num_tl_30dpd
+        - num_tl_90g_dpd_24m
+        - num_tl_op_past_12m
+        - open_acc
+        - open_acc_6m
+        - open_act_il
+        - open_il_12m
+        - open_il_24m
+        - open_rv_12m
+        - open_rv_24m
+        - pct_tl_nvr_dlq
+        - percent_bc_gt_75
+        - pub_rec_bankruptcies
+        - revol_bal
+        - revol_bal_joint 
+        - revol_util
+        - tot_coll_amt
+        - tot_cur_bal
+        - tot_hi_cred_lim
+        - total_acc
+        - total_bal_ex_mort
+        - total_bal_il
+        - total_bc_limit
+        - total_cu_tl
+        - total_il_high_credit_limit
+        - total_rev_hi_lim
+        # - time_since_earliest_cr_line
+
